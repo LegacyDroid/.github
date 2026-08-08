@@ -1,6 +1,6 @@
 # LegacyDroid Manifests
 
-LegacyDroid provides curated Android source manifests and snippets for building a LineageOS 21 (Android 14) based custom ROM targeted at the x86_64 emulator (legacydroid_sdk_phone_x86_64). This repository contains the main repo manifest (default.xml) plus useful snippet manifests (e.g., Lineage and Pixel device groups) that make it easy to initialize and sync the full source tree.
+LegacyDroid provides curated Android source manifests and snippets for building a LineageOS 21 (Android 14) based custom ROM targeted at the x86_64 emulator (lineage_sdk_phone_x86_64). This repository contains the main repo manifest (default.xml) plus useful snippet manifests (e.g., Lineage and Pixel device groups) that make it easy to initialize and sync the full source tree.
 
 ## Quick start
 
