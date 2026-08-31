@@ -1,15 +1,68 @@
-# LegacyDroid Manifests
+# LegacyDroid
 
-LegacyDroid provides curated Android source manifests and snippets for building a LineageOS 21 (Android 14) based custom ROM targeted at the x86_64 emulator (lineage_sdk_phone_x86_64). This repository contains the main repo manifest (default.xml) plus useful snippet manifests (e.g., Lineage and Pixel device groups) that make it easy to initialize and sync the full source tree.
+**LegacyDroid** is a custom Android ROM project based on Android 14.
 
-## Quick start
+## Getting Started
 
-Prerequisites
-- repo tool (Android's repo)
-- git and Git LFS
-- Build host dependencies as listed by AOSP/LineageOS (Java, required packages). See https://source.android.com/setup/develop for details.
+### 1. Initialize the source
 
-Initialize using the LegacyDroid manifest (branch: legacydroid-14)
 ```bash
-repo init -u https://github.com/LegacyDroid/android_manifest.git -b legacydroid-14 --git-lfs
+repo init -u https://github.com/LegacyDroid/android_manifest.git \
+    -b legacydroid-14 \
+    --git-lfs
+```
+
+### 2. Sync the source
+
+```bash
 repo sync
+```
+
+Depending on your connection and hardware, the initial sync may take a while.
+
+## Build Preparation
+
+### Magisk
+
+The ROM requires the latest Magisk APK at:
+
+```text
+vendor/aosproot/magisk.apk
+```
+
+Download the latest Magisk APK and place it there before building.
+
+### LuminaAI Live2D
+
+LuminaAI requires additional vendor assets.
+
+Follow the setup instructions provided by:
+
+```text
+packages/apps/LuminaAI/live2d/get_vendor.sh
+```
+
+Run the script and follow it tutorial before starting the build.
+
+## Building
+
+After syncing and completing the required vendor setup, follow the device-specific build instructions for your target device.
+
+---
+
+## Source
+
+Manifest:
+
+https://github.com/LegacyDroid/android_manifest
+
+Branch:
+
+```text
+legacydroid-14
+```
+
+## License
+
+Individual components of LegacyDroid may be distributed under their respective licenses.
+See the individual repositories for licensing information.
