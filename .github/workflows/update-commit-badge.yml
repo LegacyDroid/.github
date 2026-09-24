@@ -1,0 +1,55 @@
+name: Update LegacyDroid commit badge
+
+on:
+  schedule:
+    # 03:23 UTC every day
+    - cron: "23 3 * * *"
+  workflow_dispatch:
+    inputs:
+      github_user:
+        description: "GitHub username whose commits should be counted"
+        required: false
+        default: "minhmc2007"
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: legacydroid-commit-badge
+  cancel-in-progress: true
+
+jobs:
+  update-badge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out .github
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Count LegacyDroid commits and update badge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_API_URL: ${{ github.api_url }}
+          OWNER: LegacyDroid
+          TARGET_BRANCH: legacydroid-14
+          COMMIT_GITHUB_USER: ${{ github.event.inputs.github_user || 'minhmc2007' }}
+          README_PATH: profile/README.md
+        run: python3 scripts/update_commit_badge.py
+
+      - name: Commit updated badge
+        run: |
+          if git diff --quiet -- profile/README.md; then
+            echo "Commit badge is already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/README.md
+          git commit -m "chore: update LegacyDroid commit badge"
+          git push
