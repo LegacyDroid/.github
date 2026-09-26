@@ -1,7 +1,7 @@
 # LegacyDroid
 
 <!-- LEGACYDROID_COMMIT_COUNT:START -->
-[![LegacyDroid commits](https://img.shields.io/badge/LegacyDroid%20commits-323-brightgreen?style=flat-square)](https://github.com/LegacyDroid)
+[![LegacyDroid commits](https://img.shields.io/badge/LegacyDroid%20commits-328-brightgreen?style=flat-square)](https://github.com/LegacyDroid)
 <!-- LEGACYDROID_COMMIT_COUNT:END -->
 
 **LegacyDroid** is a custom Android ROM project based on Android 14.
